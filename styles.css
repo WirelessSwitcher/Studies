@@ -14,19 +14,17 @@ body {
   background-color: #202020;
 }
 
-.projectArea{
+#projectArea{
 
   position: absolute;
   top: 10vh;
-  left: 10vl;
+  left: 10vw;
 
   width: 80vw;
   height: 80vh;
 
-  border: 2px;
+  border: 2px solid  #808080;
   border-radius: 10px;
-  border-color: #808080;
-
   margin: 0px;
   padding: 0px;
 
