@@ -5,4 +5,4 @@ var ctx = canvas.getContext("2d");
     ctx.moveTo(300,300);
     ctx.lineTo(200,100);
     ctx.stroke();
-//};s
+//};
