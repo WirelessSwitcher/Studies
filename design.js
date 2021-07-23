@@ -70,4 +70,4 @@ function debounceResize(){
 	console.log(delayTime);
 
 	resizeFlag = 1;
-	v
+}
