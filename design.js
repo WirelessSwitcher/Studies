@@ -5,7 +5,7 @@
 	This document shall contain animations and processes common to all pages within the project.
 
 	Last update: 26/06/2021
-	Comment: added header and document's explanation
+	Comment: added header and document's
 */
 
 // SCADA Drawing Area and Elements

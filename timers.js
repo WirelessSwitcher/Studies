@@ -1,4 +1,14 @@
-class timer {
+/*
+	Creation date: 23/06/2021
+	Author: Andrade, J.V.
+
+	This document shall contain all timer logics available for control.
+
+	Last update: 26/06/2021
+	Comment: added header and document's
+*/
+
+class onDelay {
 	constructor(setpoint, trigger, reset, timeStamp) {
 
 		// Declare internal variables
