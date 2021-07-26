@@ -1,3 +1,13 @@
+/*
+	Creation date: 01/06/2021
+	Author: Andrade, J.V.
+
+	This document shall contain animations and processes common to all pages within the project.
+
+	Last update: 26/06/2021
+	Comment: added header and document's explanation
+*/
+
 // SCADA Drawing Area and Elements
 const canvas = document.getElementById("projectArea");												// Get the project area properties
 const ctx = canvas.getContext("2d");																// Defines a 2D plane to draw on it
