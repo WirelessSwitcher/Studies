@@ -19,11 +19,18 @@ const ratio = 4/3;																					// Project area screen proportions (width
 var count = 0;
 var resizeFlag = 0;
 
-//window.onload = drawCanvas;
-window.onresize = new debounceResizeEvent(delay);
+window.onload = function(){debounceResizeEvent(delay);};
+window.onresize = function(){debounceResizeEvent(delay);};
+
+function debounceResizeEvent(SP){
+	//console.log("Delay is: " + SP + "ms");
+	resizeFlag = 1;
+	var drawNow = setTimeout(drawCanvas, SP);
+	return drawNow;
+}
 
 function drawCanvas(){
-	console.log ("Canvas is being  drawn");
+	//console.log ("Canvas is being  drawn");
 
 	var winW = window.innerWidth;
 	var winH = window.innerHeight;
@@ -40,47 +47,40 @@ function drawCanvas(){
 	var canH = 0;
 
 	switch(winW > winH){
-			case true:
-				canvasMode = 1;																		// Canvas will be landscape, here height is the constraint
-				
-				break;
-			case false:
-				canvasMode = 0;																		// Canvas will be portrait, here width is the constraint
-				break;
-			default:
-				canvasMode = null																	// Canvas will adapt to screen
-		}
-
-		if(resizeFlag == 1){
-
-			if(winW > winH){
-				console.log("Landscape mode");
-			}
-			else if (winW < winH){
-				console.log("Portrait mode");
-			}
-			else {
-				console.log("Square screen");
-			}
-
-			const redrawCount = count++;
+		case true:
+			canvasMode = 1;																		// Canvas will be landscape, here height is the constraint
 			
-			console.log("Proto width 1 is: " + protoW1
-			+ "\n" + "Proto height 1 is: " + protoH1
-			+ "\n" + "Proto width 2 is: " + protoW2
-			+ "\n" + "Proto height 2 is: " + protoH2
-			//+ "\n" + "Orientation is: " + orientation
-			+ "\n" + "Times loadded: " + count
-			);
+			break;
+		case false:
+			canvasMode = 0;																		// Canvas will be portrait, here width is the constraint
+			break;
+		default:
+			canvasMode = null																	// Canvas will adapt to screen
+	}
 
-			// Reset resize flag when done
-			resizeFlag = 0;
+	if(resizeFlag == 1){
+
+		if(winW > winH){
+			console.log("Landscape mode");
 		}
-}
+		else if (winW < winH){
+			console.log("Portrait mode");
+		}
+		else {
+			console.log("Square screen");
+		}
 
-function debounceResizeEvent(SP){
-    let mySP = parseInt(SP);
-	console.log("Delay is: " + mySP + "ms");
-	resizeFlag = 1;
-	setTimeout(drawCanvas, mySP);
+		const redrawCount = count++;
+		
+		console.log("Proto width 1 is: " + protoW1
+		+ "\n" + "Proto height 1 is: " + protoH1
+		+ "\n" + "Proto width 2 is: " + protoW2
+		+ "\n" + "Proto height 2 is: " + protoH2
+		//+ "\n" + "Orientation is: " + orientation
+		+ "\n" + "Times loadded: " + count
+		);
+
+		// Reset resize flag when done
+		resizeFlag = 0;
+	}
 }
