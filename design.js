@@ -48,14 +48,14 @@ function drawCanvas(){
 
 	switch(winW > winH){
 		case true:
-			canvasMode = 1;																		// Canvas will be landscape, here height is the constraint
+			canvasMode = 1;																			// Canvas will be landscape, here height is the constraint
 			
 			break;
 		case false:
-			canvasMode = 0;																		// Canvas will be portrait, here width is the constraint
+			canvasMode = 0;																			// Canvas will be portrait, here width is the constraint
 			break;
 		default:
-			canvasMode = null																	// Canvas will adapt to screen
+			canvasMode = null																		// Canvas will adapt to screen
 	}
 
 	if(resizeFlag == 1){
