@@ -13,74 +13,74 @@ const canvas = document.getElementById("projectArea");												// Get the pro
 const ctx = canvas.getContext("2d");																// Defines a 2D plane to draw on it
 
 // Settings
-const delay = 1000;																					// Delay in ms when window is resized
-const ratio = 4/3;																					// Project area screen proportions (width by height)
+const delay = 1000;																					// Delay in ms prior to reloading projectArea
+const currentProjectRatio = 4/3;																	// Project area screen proportions (width by height)
 
-var count = 0;
-var resizeFlag = 0;
+// Variables
+var count = 0;																						// Counts how many times the page has been loaded
 
-window.onload = function(){debounceResizeEvent(delay);};
-window.onresize = function(){debounceResizeEvent(delay);};
+// Events
+window.onload = function(){debounceEvent(delay);};													// Draws the design when page is loaded
+window.onresize = function(){debounceEvent(delay);};												// Draws the design when page is resized
 
-function debounceResizeEvent(SP){
-	//console.log("Delay is: " + SP + "ms");
-	resizeFlag = 1;
-	var drawNow = setTimeout(drawCanvas, SP);
-	return drawNow;
+function debounceEvent(SP){
+	count = count + 1;
+	setTimeout(function(){
+		drawCanvas(currentProjectRatio);
+	}, SP);
 }
 
-function drawCanvas(){
-	//console.log ("Canvas is being  drawn");
+function drawCanvas(projectRatio){
 
-	var winW = window.innerWidth;
-	var winH = window.innerHeight;
-	var screenMode = null;
-	var canvasMode = null;
+	// Check currentmost dimensions
+	winW = window.innerWidth;
+	winH = window.innerHeight;
 
-	let protoW1 = 0.8 * winW;
-	let protoH1 = protoW1 * (1/ratio);
+	if(count != 0){
 
-	let protoW2 = 0.8 * winH;
-	let protoH2 = protoW2 * ratio;
+		let screenOrientation;
+		var screenRatio = winW / winH;
 
-	var canW = 0;
-	var canH = 0;
-
-	switch(winW > winH){
-		case true:
-			canvasMode = 1;																			// Canvas will be landscape, here height is the constraint
-			
+		switch(true) {
+			case screenRatio > 1:
+				screenOrientation = 0;																// Landscape
 			break;
-		case false:
-			canvasMode = 0;																			// Canvas will be portrait, here width is the constraint
+			case screenRatio < 1 :
+				screenOrientation = 1;																// Portrait
 			break;
-		default:
-			canvasMode = null																		// Canvas will adapt to screen
-	}
-
-	if(resizeFlag == 1){
-
-		if(winW > winH){
-			console.log("Landscape mode");
-		}
-		else if (winW < winH){
-			console.log("Portrait mode");
-		}
-		else {
-			console.log("Square screen");
+			default:
+				screnOrientation = 2;																// Square
+			break;
 		}
 
-		const redrawCount = count++;
-		
-		console.log("Proto width 1 is: " + protoW1
-		+ "\n" + "Proto height 1 is: " + protoH1
-		+ "\n" + "Proto width 2 is: " + protoW2
-		+ "\n" + "Proto height 2 is: " + protoH2
-		//+ "\n" + "Orientation is: " + orientation
-		+ "\n" + "Times loadded: " + count
-		);
+		switch(true) {
+			case projectRatio > 1:
+				projectOrientation = 0;																// Landscape
+			break;
+			case projectRatio < 1 :
+				projectOrientation = 1;																// Portrait
+			break;
+			default:
+				projectOrientation = 2;																// Square
+			break;
+		}
 
-		// Reset resize flag when done
-		resizeFlag = 0;
+		//if(screenRatio < projectRatio){															// If screen is narrower than project
+			ctx.canvas.width = 0.8 * winW;
+			console.log("ctx.canvas.width is " + ctx.canvas.width);
+
+			canW = document.getElementById("projectArea").width;
+			console.log("canW is: " + canW);
+
+			ctx.canvas.height = canW / 2;
+			console.log("ctx.canvas.height is " + ctx.canvas.height);
+
+			canH = document.getElementById("projectArea").height;
+			console.log("canH is: " + canH);
+		//}
+
+		count = 0;
+
+		drawGrid();
 	}
 }
