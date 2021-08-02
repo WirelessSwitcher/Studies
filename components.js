@@ -13,7 +13,7 @@
 //var ctx = canvas.getContext("2d");
 
 function drawGrid(c, r, sc, sr){
-    ctx.moveTo(0,0);
-    ctx.lineTo(200,100);
-    ctx.stroke();
+	ctx.moveTo(0,0);
+	ctx.lineTo(200,100);
+	ctx.stroke();
 };
