@@ -77,6 +77,7 @@ function drawCanvas(projectRatio){
 		console.log("canW is: " + canW);
 
 	}
+	
 	canvas.style.left = (winW - canW) / 2 + "px";
 	console.log("ctx.canvas.left is " + canvas.style.left);
 	canvas.style.top = (winH - canH)  / 2 + "px";
@@ -93,8 +94,6 @@ fileReader.onload = function(e){
 	fileContents.innerHTML = filerReader.result;
 }
 fileReader.readAsText(text.blob);
-
-
 
 /* Maybe will be used later
 
