@@ -14,13 +14,18 @@ function drawGrid(){
     let prjW = projectArea.width;
     let prjH = projectArea.height;
 
-    let numV = Math.round(prjW / (prjW - prjH)) * 5;
-    let numH = Math.round(prjH / (prjW - prjH)) * 5;
+    let numV = Math.round(prjW / (prjW - prjH)) * 5;                                                // number of vertical lines
+    let numH = Math.round(prjH / (prjW - prjH)) * 5;                                                // number of horizontal lines
+
+    let stepV = prjW / numV;
+    let stepH = prjH / numH;
 
     console.log("Width: " + prjW +
         "\n" + "Height: " + prjH +
         "\n" + "Vertical lines: " + numV +
-        "\n" + "Horizontal lines: " + numH
+        "\n" + "Horizontal lines: " + numH +
+        "\n" + "StepV: " + stepV +
+        "\n" + "StepH: " + stepH
     );
 
     // Draw vertical lines
