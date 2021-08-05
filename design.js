@@ -40,88 +40,56 @@ function debounceEvent(SP){
 
 function drawCanvas(projectRatio){
 
-    // Check currentmost dimensions
-    winW = window.innerWidth;
-    winH = window.innerHeight;
+	const winW = window.innerWidth;																	// Internal window width
+    const winH = window.innerHeight;																// Internal window height
 
-    let canW;
-    let canH;
+    const maxW = 0.8 * winW;																		// Maximum canvas width
+    const maxH = 0.8 * winH;																		// Maximum canvas height
 
-    let screenOrientation;
-    let screenRatio = winW / winH;
+    var canW;																						// Calculated canvas width
+    var canH;																						// Calculated canvas height
 
-    if(screenRatio < projectRatio){                                                                 // If screenRatio is narrower than project
-        ctx.canvas.width = 0.8 * winW;
-        console.log("ctx.canvas.width is " + ctx.canvas.width);
+	var canL;
+	var canT;
 
-        canW = document.getElementById("projectArea").width;
-        console.log("canW is: " + canW);
+    for(i = 0; i < maxW; i++) {
+		canW = i;
+        canH = canW * (1/projectRatio);
 
-        ctx.canvas.height = canW / projectRatio;
-        console.log("ctx.canvas.height is " + ctx.canvas.height);
-
-        canH = document.getElementById("projectArea").height;
-        console.log("canH is: " + canH);
+       if (canH >= maxH){
+           break;
+       }
     }
-    else {
-        ctx.canvas.height = 0.8 * winH;
-        console.log("ctx.canvas.width is " + ctx.canvas.width);
 
-        canH = document.getElementById("projectArea").height;
-        console.log("canH is: " + canH);
+	ctx.canvas.width = canW;
+	ctx.canvas.height = canH;
 
-        ctx.canvas.width = canH * projectRatio;
-        console.log("ctx.canvas.width is " + ctx.canvas.width);
+    canL = ((winW - canW) / 2) + "px";
+    canT = ((winH - canH) / 2) + "px";
 
-        canW = document.getElementById("projectArea").width;
-        console.log("canW is: " + canW);
+	canvas.style.left = canL;
+    canvas.style.top = canT;
 
-    }
-    
-    canvas.style.left = (winW - canW) / 2 + "px";
-    console.log("ctx.canvas.left is " + canvas.style.left);
-    canvas.style.top = (winH - canH)  / 2 + "px";
-    console.log("ctx.canvas.top is " + canvas.style.top);
+	/*console.log
+		"winW is: " + winW
+		+ "\n" + "winH is: " + winH
+		+ "\n" + "maxW is: " + maxW
+		+ "\n" + "maxH is: " + maxH
+		+ "\n" + "canW is: " + canW
+		+ "\n" + "canH is: " + canH
+		+ "\n" + "canL is: " + canL
+		+ "\n" + "canT is: " + canT
+	);*/
 
     count = 0;                                                                                      // Reset count in order to perform function drawCanvas again when it's finished
-
     drawGrid();
 }
 
+/*
 var fileReader = new FileReader();
 fileReader.onload = function(e){
     var fileContents = document.getElementById('title');
     fileContents.innerHTML = filerReader.result;
 }
 fileReader.readAsText(text.blob);
-
-/* Maybe will be used later
-
-    let screenOrientation;
-    var screenRatio = winW / winH;
-
-        switch(true) {                                                                              	// Detects screen orientation
-            case screenRatio > 1:
-                screenOrientation = 0;                                                              	// Landscape
-            break;
-            case screenRatio < 1 :
-                screenOrientation = 1;                                                              	// Portrait
-            break;
-            default:
-                screnOrientation = 2;                                                               	// Square
-            break;
-        }
-
-        switch(true) {                                                                              	// Detects project orientation
-            case projectRatio > 1:
-                projectOrientation = 0;                                                             	// Landscape
-            break;
-            case projectRatio < 1 :
-                projectOrientation = 1;                                                             	// Portrait
-            break;
-            default:
-                projectOrientation = 2;                                                             	// Square
-            break;
-        }
-
 */

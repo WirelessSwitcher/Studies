@@ -1,14 +1,21 @@
-var winX = window.innerWidth;
-var winY = window.innerHeight;
-
-var maxX = 0.8 * winX;
-var maxY = 0.8 * winY;
-
 const ratio = 4/3;
 
-var ax = function retrieveWidth(windowW, windowH, desiredFactor){
-    for(i = 0, i <= maxX, i++){
-        console.log("'i' is: " + i);
-        
+projectArea.onclick = function() {
+
+    var sx = window.innerWidth;
+    var sy = window.innerHeight;
+
+    var maxX = 0.8 * sx;
+    var maxY = 0.8 * sy;
+
+    var x;
+    var y;
+
+    for(x = 0; x < maxX; x++) {
+        y = x * (1/ratio);
+
+       if (y > maxY){
+           break;
+       }
     }
 }
