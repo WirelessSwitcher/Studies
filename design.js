@@ -14,7 +14,7 @@ const ctx = canvas.getContext("2d");                                            
 
 // Settings
 const delay = 1000;                                                                                 // Delay in ms prior to reloading projectArea
-const currentProjectRatio = 4/3;                                                                    // Project area screen proportions (width by height)
+const currentProjectRatio = 1920/1080;																// Project area screen proportions (width by height)
 
 // Variables
 var count = 0;                                                                                      // Counts how many times the page has been loaded
@@ -82,6 +82,7 @@ function drawCanvas(projectRatio){
 	);*/
 
     count = 0;                                                                                      // Reset count in order to perform function drawCanvas again when it's finished
+
     drawGrid();
 }
 
