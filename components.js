@@ -1,12 +1,12 @@
 /*
-	Creation date: 01/06/2021
-	Author: Andrade, J.V.
+    Creation date: 01/06/2021
+    Author: Andrade, J.V.
 
-	This document shall contain the instructions to draw components used in the project,
+    This document shall contain the instructions to draw components used in the project,
     such as valves, bar-graphs, buttons, trunnions, etc.
 
-	Last update: 26/06/2021
-	Comment: added header and document's
+    Last update: 26/06/2021
+    Comment: added header and document's
 */
 
 //var canvas = document.getElementById("projectArea");
