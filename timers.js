@@ -4,7 +4,7 @@
 
     This document shall contain all timer logics available for control.
 
-    Last update: 26/06/2021
+    Last update: 05/08/2021
     Comment: added header and document's
 */
 

@@ -4,7 +4,7 @@
 
     This document shall contain animations and processes common to all pages within the project.
 
-    Last update: 26/06/2021
+    Last update: 05/08/2021
     Comment: added header and document's
 */
 

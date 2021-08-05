@@ -5,12 +5,9 @@
     This document shall contain the instructions to draw components used in the project,
     such as valves, bar-graphs, buttons, trunnions, etc.
 
-    Last update: 26/06/2021
+    Last update: 05/08/2021
     Comment: added header and document's
 */
-
-//var canvas = document.getElementById("projectArea");
-//var ctx = canvas.getContext("2d");
 
 function drawGrid(c, r, sc, sr){
 	ctx.moveTo(0,0);
