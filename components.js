@@ -14,8 +14,8 @@ function drawGrid(){
     let prjW = projectArea.width;
     let prjH = projectArea.height;
 
-    let numV = Math.round(prjW / (prjW - prjH)) * 5;                                                // number of vertical lines
-    let numH = Math.round(prjH / (prjW - prjH)) * 5;                                                // number of horizontal lines
+    let numV = (prjW / (prjW - prjH)) * 10;                                                // number of vertical lines
+    let numH = (prjH / (prjW - prjH)) * 10;                                                // number of horizontal lines
 
     let stepV = prjW / numV;
     let stepH = prjH / numH;

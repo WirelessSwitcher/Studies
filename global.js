@@ -8,15 +8,18 @@
     Comment: added header and document's
 */
 
-var globalVar1 = "Test3";
-
 var http = require("http");
 var fs = require("fs");
 
 function onRequest(request, response){
-    fs.readFile("index.html", function(err, data){
-        response.writeHead(200, {"Contetn-Type": "text/html"});
-        response.write(data);
+    response.writeHead(200, {"Contetn-Type": "text/plain"});
+    fs.readFile("./index.html", null, function(error, data){
+        if(error){
+            response.writeHead(404);
+            response.write("File not found!")
+        }else{
+            response.write(data);
+        }
         return response.end();
     });
 }
