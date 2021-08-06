@@ -9,3 +9,11 @@
 */
 
 var globalVar1 = "Test3";
+
+var html = require('html');
+
+function onRequest(request, response){
+    response.writeHead(200, {"content-type"})
+}
+
+http.createServer(onRequest).listen(3000);
