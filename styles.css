@@ -30,7 +30,7 @@ p{
 #projectArea{
     position: absolute;
 
-    border: 2px solid #000000;
+    border: 0px; /*2px solid #000000;*/
     /*border-radius: 10px;*/
     margin: 0px;
     padding: 0px;

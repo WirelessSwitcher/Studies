@@ -14,10 +14,12 @@ const ctx = canvas.getContext("2d");                                            
 
 // Settings
 const delay = 1000;                                                                                 // Delay in ms prior to reloading projectArea
-const currentProjectRatio = 1920/1080;																// Project area screen proportions (width by height)
+const targetRes = [1920, 1080];     																// Project area screen proportions (width by height)
+const objDiv = 100;                                                                                 // Fraction of the screen to be set as object's 
+const subDiv = 5;                                                                                   // How many divisions are inside the object's 
 
 // Variables
-var count = 0;                                                                                      // Counts how many times the page has been loaded
+var loadCounter = 0;                                                                                // Counts how many times the page has been loaded
 
 // Events
 window.onload = function(){                                                                         // Draws the design when page is loaded
@@ -28,37 +30,58 @@ window.onresize = function(){                                                   
     debounceEvent(delay);
 }
 
-// Filter extra unwanted events to save processing power
-function debounceEvent(SP){
-    count = count + 1;
-    if(count == 1){
+// Functions
+function main(){
+
+    const project = drawCanvas(targetRes);
+    const grid = drawGrid();
+}
+
+
+function debounceEvent(SP){                                                                         // Filter extra unwanted events to save processing power
+    loadCounter = loadCounter + 1;
+    if(loadCounter == 1){
         setTimeout(function(){
-            drawCanvas(currentProjectRatio);
+            main();
         }, SP);
     }
 }
 
-function drawCanvas(projectRatio){
+function drawCanvas(resolution){
 
 	const winW = window.innerWidth;																	// Internal window width
     const winH = window.innerHeight;																// Internal window height
 
-    const maxW = 0.8 * winW;																		// Maximum canvas width
-    const maxH = 0.8 * winH;																		// Maximum canvas height
+    let maxW;											                							// Maximum canvas width
+    let maxH;											    			            				// Maximum canvas height
 
     var canW;																						// Calculated canvas width
     var canH;																						// Calculated canvas height
 
-	var canL;
-	var canT;
+	var canL;                                                                                       // Canvas distance from the left
+	var canT;                                                                                       // Canvas distance from the top
+    
+    let projectRatio = resolution[0] / resolution[1];
 
-    for(i = 0; i < maxW; i++) {
-		canW = i;
-        canH = canW * (1/projectRatio);
+    // Full Screen Mode
+    if(window.innerHeight == screen.height){   
+        maxW = screen.width;                                                                        // Max width is the same as screen width
+        maxH = screen.height;                                                                       // Max height is the same as the screen height
+        canW = screen.width;                                                                        // Canvas width is the same as screen width
+        canH = screen.height;                                                                       // Canvas height is the same as screen height 
 
-       if (canH >= maxH){
-           break;
-       }
+    } else {                                                                                        // Running in windowed mode to enable developing tools                                                   
+        maxW = 0.8 * winW;                                                                          // Maximum width will be 80% of the actual screen width
+        maxH = 0.8 * winH;                                                                          // Maximum height will be 80% of the actual screen height
+
+        for(i = 0; i < maxW; i++) {                                                                 // Iterates actual canvas width until height reaches maximum height
+            canW = i;
+            canH = canW * (1/projectRatio);
+    
+           if (canH >= maxH){
+               break;
+           }
+        }
     }
 
 	ctx.canvas.width = canW;
@@ -70,27 +93,95 @@ function drawCanvas(projectRatio){
 	canvas.style.left = canL;
     canvas.style.top = canT;
 
-	/*console.log
-		"winW is: " + winW
-		+ "\n" + "winH is: " + winH
-		+ "\n" + "maxW is: " + maxW
-		+ "\n" + "maxH is: " + maxH
-		+ "\n" + "canW is: " + canW
-		+ "\n" + "canH is: " + canH
-		+ "\n" + "canL is: " + canL
-		+ "\n" + "canT is: " + canT
-	);*/
-
-    count = 0;                                                                                      // Reset count in order to perform function drawCanvas again when it's finished
-
-    drawGrid();
+    loadCounter = 0;                                                                                // Reset count in order to perform function drawCanvas again when it's finished
 }
 
-/*
-var fileReader = new FileReader();
-fileReader.onload = function(e){
-    var fileContents = document.getElementById('title');
-    fileContents.innerHTML = filerReader.result;
+function calcCanvas(calcCanvasMaxH, calcCanvasMaxW){
+    
 }
-fileReader.readAsText(text.blob);
-*/
+
+function drawGrid(){
+
+    // Calculates centre of Canvas
+    let midX = projectArea.innerWidth/2;
+    let midY = projectArea.innerHeight/2;
+
+    // Retrieves canvas' dimensions
+    let prjW = projectArea.width;
+    let prjH = projectArea.height;
+
+    // Gets the maximum division size using Euclydes' theorem
+    let euclid = [prjW, prjH];
+    for(let ei = 0; ei < 10; ei++){
+
+        console.log(euclid);
+
+        let euclidMax = Math.max(euclid[0], euclid[1]);
+        let euclidMin = Math.min(euclid[0], euclid[1]);
+
+        let difference = euclidMax - euclidMin;
+
+        euclid = [difference, euclidMin];
+
+        
+    }
+
+    let numV = (prjW / (prjW - prjH)) * 10;                                                         // number of vertical lines
+    let numH = (prjH / (prjW - prjH)) * 10;                                                         // number of horizontal lines
+
+    let stepV = prjW / numV;
+    let stepH = prjH / numH;
+
+    // Draw horizontal lines
+    for(let j = 0; j < numH/2; j++){
+        let stepY = j * (prjH / numH);
+        ctx.strokeStyle = "#000000FF";
+        ctx.beginPath();
+        ctx.moveTo(0, midY + stepY);
+        ctx.lineTo(prjW, midY + stepY);
+        ctx.moveTo(0, midY - stepY);
+        ctx.lineTo(prjW, midY - stepY);
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    // Draw vertical lines
+    for(let i = 0; i < numV/2; i++){
+        let stepX = i * (prjW / numV);
+        ctx.strokeStyle = "#000000FF";
+        ctx.beginPath();
+        ctx.moveTo(midX + stepX, 0);
+        ctx.lineTo(midX + stepX, prjH);
+        ctx.moveTo(midX - stepX, 0);
+        ctx.lineTo(midX - stepX, prjH);
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+    let midH = prjW/2;
+    let midV = prjH/2;
+
+    let obj
+    // Draw circle in the middle
+    ctx.strokeStyle = "#00FF00FF";
+    ctx.beginPath();
+    ctx.arc(midH, midV, 5, 0, 2*Math.PI);
+    ctx.stroke();
+    ctx.closePath();
+
+    // Draw horizontal line
+    ctx.strokeStyle = "#FF0000FF";
+    ctx.beginPath();
+    ctx.moveTo(0, midV);
+    ctx.lineTo(prjW, midV);
+    ctx.stroke();
+    ctx.closePath();
+
+    // Draw vertical line
+    ctx.strokeStyle = "#0000FFFF";
+    ctx.beginPath();
+    ctx.moveTo(midH, 0);
+    ctx.lineTo(midH, prjH);
+    ctx.stroke();
+    ctx.closePath();
+};
