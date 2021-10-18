@@ -9,8 +9,25 @@
     Comment: added header and document's
 */
 
-const player = {
-    id: 0;
-    posX: 50;
-    posY: 50;
+var player = class{
+    constructor(playerID, playerX, playerY,  playerW, playerH, playerColour){
+        this.id = playerID;
+        this.left = playerX;
+        this.top = playerY;
+        this.width = playerW;
+        this.height = playerH;
+        this.colour = playerColour;
+        
+        drawPlayer(this.left, this.top, this.width, this.height, this.colour);
+    }
+}
+
+function drawPlayer(x, y, w, h, colour){
+    ctx.beginPath();
+    ctx.strokeStyle = "#000000FF";
+    ctx.rect(x, y, w, h);
+    ctx.fillStyle = colour;
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
 }

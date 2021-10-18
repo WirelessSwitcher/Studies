@@ -74,14 +74,8 @@ function drawCanvas(resolution){
         maxW = 0.8 * winW;                                                                          // Maximum width will be 80% of the actual screen width
         maxH = 0.8 * winH;                                                                          // Maximum height will be 80% of the actual screen height
 
-        for(i = 0; i < maxW; i++) {                                                                 // Iterates actual canvas width until height reaches maximum height
-            canW = i;
-            canH = canW * (1/projectRatio);
-    
-           if (canH >= maxH){
-               break;
-           }
-        }
+        canW = calcCanvas(maxW, maxH, projectRatio)[0];
+        canH = calcCanvas(maxW, maxH, projectRatio)[1];
     }
 
 	ctx.canvas.width = canW;
@@ -96,8 +90,19 @@ function drawCanvas(resolution){
     loadCounter = 0;                                                                                // Reset count in order to perform function drawCanvas again when it's finished
 }
 
-function calcCanvas(calcCanvasMaxH, calcCanvasMaxW){
-    
+function calcCanvas(maxW, maxH, projectRatio){
+    let canW, canH;
+
+    for(i = 0; i < maxW; i++) {                                                                     // Iterates actual canvas width until height reaches maximum height
+        canW = i;
+        canH = canW * (1/projectRatio);
+
+       if (canH >= maxH){
+           break;
+       }
+    }
+    let result = [canW, canH];
+    return result;
 }
 
 function drawGrid(){
@@ -123,7 +128,6 @@ function drawGrid(){
 
         euclid = [difference, euclidMin];
 
-        
     }
 
     let numV = (prjW / (prjW - prjH)) * 10;                                                         // number of vertical lines
@@ -161,14 +165,6 @@ function drawGrid(){
     let midH = prjW/2;
     let midV = prjH/2;
 
-    let obj
-    // Draw circle in the middle
-    ctx.strokeStyle = "#00FF00FF";
-    ctx.beginPath();
-    ctx.arc(midH, midV, 5, 0, 2*Math.PI);
-    ctx.stroke();
-    ctx.closePath();
-
     // Draw horizontal line
     ctx.strokeStyle = "#FF0000FF";
     ctx.beginPath();
@@ -184,4 +180,21 @@ function drawGrid(){
     ctx.lineTo(midH, prjH);
     ctx.stroke();
     ctx.closePath();
+
+    let centreCircle = drawCircle(midH, midV, midH/10, "#00FF00FF");
+    let lefCourt = drawCircle(0, midV, midH/2, "#FF0000FF");
+    let rightCourt = drawCircle(2*midH, midV, midH/2, "#FF0000FF");
+    let leftBasket = drawCircle(midH/20, midV, midH/20, "#FF7C00FF");
+    let rightBasket = drawCircle((prjW - midH/20), midV, midH/20, "#FF7C00FF");
 };
+
+function drawCircle(posX, posY, radius, colour){
+
+    // Draw circle in the middle
+    ctx.beginPath();
+    ctx.strokeStyle = colour;
+    ctx.arc(posX, posY, radius, 0, 2*Math.PI);
+    ctx.stroke();
+    ctx.closePath();
+
+}
