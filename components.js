@@ -17,16 +17,14 @@ var player = class{
         this.width = playerW;
         this.height = playerH;
         this.colour = playerColour;
-        
-        drawPlayer(this.left, this.top, this.width, this.height, this.colour);
     }
 }
 
-function drawPlayer(x, y, w, h, colour){
+function drawPlayer(player){
     ctx.beginPath();
     ctx.strokeStyle = "#000000FF";
-    ctx.rect(x, y, w, h);
-    ctx.fillStyle = colour;
+    ctx.rect(player.left, player.top, player.width, player.height);
+    ctx.fillStyle = player.colour;
     ctx.fill();
     ctx.stroke();
     ctx.closePath();

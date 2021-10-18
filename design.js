@@ -24,10 +24,12 @@ var loadCounter = 0;                                                            
 // Events
 window.onload = function(){                                                                         // Draws the design when page is loaded
     debounceEvent(delay);
+    loadPlayer("init", 0);
 }
 
 window.onresize = function(){                                                                       // Draws the design when page is resized
     debounceEvent(delay);
+    loadPlayer("load", 0);
 }
 
 // Functions
