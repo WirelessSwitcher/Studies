@@ -24,12 +24,10 @@ var loadCounter = 0;                                                            
 // Events
 window.onload = function(){                                                                         // Draws the design when page is loaded
     debounceEvent(delay);
-    loadPlayer("init", 0);
 }
 
 window.onresize = function(){                                                                       // Draws the design when page is resized
     debounceEvent(delay);
-    loadPlayer("load", 0);
 }
 
 // Functions
@@ -37,6 +35,7 @@ function main(){
 
     const project = drawCanvas(targetRes);
     const grid = drawGrid();
+    loadPlayer("init", 0);
 }
 
 
@@ -76,8 +75,9 @@ function drawCanvas(resolution){
         maxW = 0.8 * winW;                                                                          // Maximum width will be 80% of the actual screen width
         maxH = 0.8 * winH;                                                                          // Maximum height will be 80% of the actual screen height
 
-        canW = calcCanvas(maxW, maxH, projectRatio)[0];
-        canH = calcCanvas(maxW, maxH, projectRatio)[1];
+        let canvasResult = calcCanvas(maxW, maxH, projectRatio)
+        canW = canvasResult[0];
+        canH = canvasResult[1];
     }
 
 	ctx.canvas.width = canW;
@@ -121,7 +121,7 @@ function drawGrid(){
     let euclid = [prjW, prjH];
     for(let ei = 0; ei < 10; ei++){
 
-        console.log(euclid);
+        //console.log(euclid);
 
         let euclidMax = Math.max(euclid[0], euclid[1]);
         let euclidMin = Math.min(euclid[0], euclid[1]);

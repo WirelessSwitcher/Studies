@@ -21,6 +21,7 @@ var player = class{
 }
 
 function drawPlayer(player){
+    //console.log("Drawing " + player.id);
     ctx.beginPath();
     ctx.strokeStyle = "#000000FF";
     ctx.rect(player.left, player.top, player.width, player.height);
