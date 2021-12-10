@@ -8,20 +8,16 @@
     Comment: added header and document's
 */
 
-var http = require("http");
-var fs = require("fs");
+const express = require('express');
+const app = express();
+const port = 3000;
 
-function onRequest(request, response){
-    response.writeHead(200, {"Contetn-Type": "text/plain"});
-    fs.readFile("./index.html", null, function(error, data){
-        if(error){
-            response.writeHead(404);
-            response.write("File not found!")
-        }else{
-            response.write(data);
-        }
-        return response.end();
-    });
-}
-
-http.createServer(onRequest).listen(3000);
+app.get('/', (req, res) => {
+        res.send('Hello World!');
+    }
+);
+  
+app.listen(port, () => {
+        console.log(`Example app listening at http://localhost:${port}`);
+    }
+);
