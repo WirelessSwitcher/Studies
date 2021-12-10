@@ -13,6 +13,11 @@ const app = express();
 const port = 3000;
 var serveStatic = require('serve-static')
 
+var server = http.createServer(function onRequest (req, res){
+    serve(req, res, finalhandler(req,res));
+});
+
+server.listen(3000);
 
 app.get('/', (req, res) => {
         res.send('Hello World!');
