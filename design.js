@@ -20,6 +20,8 @@ const subDiv = 5;                                                               
 
 // Variables
 var loadCounter = 0;                                                                                // Counts how many times the page has been loaded
+var playerPosX;
+var playerPosY;
 
 // Events
 window.onload = function(){                                                                         // Draws the design when page is loaded
@@ -35,7 +37,7 @@ function main(){
 
     const project = drawCanvas(targetRes);
     const grid = drawGrid();
-    loadPlayer("init", 0);
+    loadPlayer("init", detectKey(), 0, 0);
 }
 
 

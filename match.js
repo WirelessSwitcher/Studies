@@ -1,16 +1,18 @@
 document.onkeydown = function(e){
     let pressedKey = detectKey(e.key);
 
-    if((pressedKey == "up") || (pressedKey == "down") || (pressedKey == "left") || (pressedKey == "right")){
-        movePlayer();
-        loadPlayer();
-    }else{
+    if(pressedKey == " "){
         moveBall();
         loadBall();
+    } else if(pressedKey != "none"){
+        //movePlayer();
+        loadPlayer("move", pressedKey, );
+    } else {
+        console.log("Press a valid key: a, w, s, d or space.");
     }
 };
 
-function loadPlayer(action, code){
+function loadPlayer(action, code, posX, posY){
 
     var playerPosX;
     var playerPosY;
@@ -30,8 +32,11 @@ function loadPlayer(action, code){
     }
 
     console.log(
-        "X: " + playerPosX + "\n" + 
-        "Y: " + playerPosY);
+        "X: " + playerPosX + "\n" +
+        "Y: " + playerPosY + "\n" +
+        "projectArea.width: " + projectArea.width + "\n" +
+        "projectArea.height: " + projectArea.height
+    );
 
     const player1 = new player(
         "player1", playerPosX, playerPosY, 10, 30, "#FF0000FF"
