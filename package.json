@@ -2,14 +2,16 @@
   "name": "studies",
   "version": "1.0.0",
   "description": "Here I'll store my studies and first attempts for my projects.",
-  "main": "components.js",
+  "main": "global.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
   "dependencies": {
     "express": "^4.17.1",
     "serve-static": "^1.14.1"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WirelessSwitcher/Studies.git"
