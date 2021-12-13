@@ -18,6 +18,8 @@ var player = class{
         this.height = playerH;
         this.colour = playerColour;
     }
+    console.log(this.name);
+    drawPlayer(this);
 }
 
 function drawPlayer(player){
