@@ -63,11 +63,8 @@ function loadPlayer(action, code, posX, posY){
       "projectArea.width: " + projectArea.width + "\n" +
       "projectArea.height: " + projectArea.height
   );
-
-  const player1 = new player(
-      "player1", playerPosX, playerPosY, 10, 30, "#FF0000FF"
-  );
-  drawPlayer(player1);
+  
+//drawPlayer(player1);
 }
 
 function detectKey(code){
