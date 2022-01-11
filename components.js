@@ -18,12 +18,12 @@ var player = class{
         this.height = playerH;
         this.colour = playerColour;
     }
-    console.log(this.name);
+    //console.log(this);
     drawPlayer(this);
 }
 
 function drawPlayer(player){
-    //console.log("Drawing " + player.id);
+    console.log("Drawing " + player.id);
     ctx.beginPath();
     ctx.strokeStyle = "#000000FF";
     ctx.rect(player.left, player.top, player.width, player.height);
