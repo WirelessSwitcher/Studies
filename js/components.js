@@ -5,11 +5,11 @@
     This document shall contain the instructions to draw components used in the project,
     such as valves, bar-graphs, buttons, trunnions, etc.
 
-    Last update: 05/08/2021
+    Last update: 14/01/2022
     Comment: added header and document's
 */
 
-var player = class{
+class Player{
     constructor(playerID, playerX, playerY,  playerW, playerH, playerColour){
         this.id = playerID;
         this.left = playerX;
@@ -18,8 +18,6 @@ var player = class{
         this.height = playerH;
         this.colour = playerColour;
     }
-    //console.log(this);
-    //drawPlayer(this);
 }
 
 function drawPlayer(player){
@@ -32,3 +30,4 @@ function drawPlayer(player){
     ctx.stroke();
     ctx.closePath();
 }
+

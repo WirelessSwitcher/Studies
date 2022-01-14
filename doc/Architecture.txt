@@ -18,15 +18,16 @@ Server Classes:
 
 Client Classes:
 
-- Player1
+- Player
     |_ ID
-    |_ position
-    |_ size
-    |_ points
+    |_ Position
+    |_ Size
+    |_ Points
 
-
-
-Client Classes
+- Playground
+    |_ Size
+    |_ Score board
+    |_ Remaining time
 
 A. Main Objects and Data Flow
 

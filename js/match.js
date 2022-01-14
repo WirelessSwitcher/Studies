@@ -8,28 +8,6 @@
     Comment: The global.js and the app.js have been split.
 */
 
-class Player{
-    constructor(playerID, playerX, playerY,  playerW, playerH, playerColour){
-        this.id = playerID;
-        this.left = playerX;
-        this.top = playerY;
-        this.width = playerW;
-        this.height = playerH;
-        this.colour = playerColour;
-    }
-}
-
-function drawPlayer(player){
-    console.log("Drawing " + player.id);
-    ctx.beginPath();
-    ctx.strokeStyle = "#000000FF";
-    ctx.rect(player.left, player.top, player.width, player.height);
-    ctx.fillStyle = player.colour;
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-}
-
 var player1 = new Player('player1', 0, 0, 100, 200, '#0000FFFF');
 
 document.onkeydown = function(e){
