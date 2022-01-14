@@ -3,7 +3,7 @@ Client Side Data
 1. Client to Server (System_DT)
     1.1 Screen resolution;
     1.2 Screen DPI;
-    1.3 Input method;
+    1.3 Input method (user selected after first presentation);
 
 2. Server to Client (Playground_DT)
     2.1 Field size;
@@ -15,28 +15,24 @@ Client Side Data
     2.7 Ball control;
     2.8 Points
 
-
 3. Player to Client (Player_CMD)
     3.1 Player’s ID;
     3.2 Movement commands;
     3.3 Pitch commands.
 
 4. Client to Server (Client_DT)
+    4.1 Player’s ID;
+    4.2 Player’s position;
+    4.3 Pitch status;
 
-Player’s ID;
-Player’s position;
-Pitch status;
 
-
-Client to Server (Server_IN)
-
-Screen size;
-Screen orientation;
-Input method;
+5. Client to Server (Server_IN)
+    5.1 Screen size;
+    5.2 Screen orientation;
+    5.3 Input method;
 
 
 2. Player to Client (Char_IN):
-
 Player ID;
 XY position;
 Pitch power;
