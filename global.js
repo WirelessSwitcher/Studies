@@ -120,3 +120,27 @@ function moveBall(){
 function loadBall(){
   console.log("Load ball");
 }
+
+var player = class{
+    constructor(playerID, playerX, playerY,  playerW, playerH, playerColour){
+        this.id = playerID;
+        this.left = playerX;
+        this.top = playerY;
+        this.width = playerW;
+        this.height = playerH;
+        this.colour = playerColour;
+    }
+    //console.log(this);
+    drawPlayer(this);
+}
+
+function drawPlayer(player){
+    console.log("Drawing " + player.id);
+    ctx.beginPath();
+    ctx.strokeStyle = "#000000FF";
+    ctx.rect(player.left, player.top, player.width, player.height);
+    ctx.fillStyle = player.colour;
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+}
