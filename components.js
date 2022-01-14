@@ -19,7 +19,7 @@ var player = class{
         this.colour = playerColour;
     }
     //console.log(this);
-    drawPlayer(this);
+    //drawPlayer(this);
 }
 
 function drawPlayer(player){
