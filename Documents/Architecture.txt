@@ -1,0 +1,46 @@
+Client Side Data
+
+1. Client to Server (System_DT)
+    1.1 Screen resolution;
+    1.2 Screen DPI;
+    1.3 Input method;
+
+2. Server to Client (Playground_DT)
+    2.1 Field size;
+    2.2 Controller status (physical or virtual);
+    2.3 Virtual controller (if touchscreen);
+    2.4 Opponent’s ID;
+    2.5 Opponent’s position;
+    2.6 Ball position;
+    2.7 Ball control;
+    2.8 Points
+
+
+3. Player to Client (Player_CMD)
+    3.1 Player’s ID;
+    3.2 Movement commands;
+    3.3 Pitch commands.
+
+4. Client to Server (Client_DT)
+
+Player’s ID;
+Player’s position;
+Pitch status;
+
+
+Client to Server (Server_IN)
+
+Screen size;
+Screen orientation;
+Input method;
+
+
+2. Player to Client (Char_IN):
+
+Player ID;
+XY position;
+Pitch power;
+Pitch angle (possibly);
+
+
+4.  Client to Server ()
