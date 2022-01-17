@@ -9,6 +9,7 @@
 */
 
 var player1 = new Player('player1', 0, 0, 100, 200, '#0000FFFF');
+var player2 = new Player('player1', 0, 0, 100, 200, '#0000FFFF');
 
 document.onkeydown = function(e){
   let pressedKey = detectKey(e.key);

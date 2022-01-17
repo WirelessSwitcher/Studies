@@ -8,7 +8,6 @@ Server Classes:
 
 - class Client
     |_ Screen size
-    |_ Screen DPI
     |_ Input method
     |_ Player data
 
@@ -28,6 +27,13 @@ Client Classes:
     |_ Size
     |_ Score board
     |_ Remaining time
+
+- System_DT
+    |_ Screen height;
+    |_ Screen width;
+    |_ Screen ratio;
+    |_ Screen orientation;
+    
 
 A. Main Objects and Data Flow
 

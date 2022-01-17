@@ -9,6 +9,30 @@
     Comment: added header and document's
 */
 
+class System_DT{
+    constructor(screenHeight, screenWidth, inputMethod){
+        this.screenHeight = screenHeight;
+        this.screenWidth = screenWidth;
+    }
+    
+    ratio() {
+        let ratio = this.screenHeight / this.screenWidth;
+        return ratio;
+    }
+
+    orientation(){
+        let orientation;
+    
+        if (ratio > 1){
+            orientation = false;   // Portrait
+        } else {
+            orientation = true;   // Landscape or square
+        }
+
+        return orientation;
+    }
+}
+
 class Player{
     constructor(playerID, playerX, playerY,  playerW, playerH, playerColour){
         this.id = playerID;
@@ -31,3 +55,6 @@ function drawPlayer(player){
     ctx.closePath();
 }
 
+function drawPlayground(client){
+    let ratio = client.screen[0]/client
+}
